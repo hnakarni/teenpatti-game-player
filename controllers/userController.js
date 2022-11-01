@@ -20,12 +20,14 @@ module.exports.userRegister = (req,res) => {
     }
     else{
         if(req.body.password == req.body.cpassword){
-            User.find({email : req.body.email}, function(err,alredyExit){
+            
+            User.findOne({email : req.body.email}, function(err,alredyExit){
                 if(err){
                     return res.json(500,{
                         "msg" : "Something wrong"
                     })
                 }
+                console.log(alredyExit);
                 if(!alredyExit){
                     User.create(req.body, function(err,userData){
                         if(err){
@@ -55,7 +57,7 @@ module.exports.userRegister = (req,res) => {
 
 
 module.exports.viewRecord = (req,res) => {
-    return res.json(200,{
+    return res.status(200).json({
         'status' : "All record fetch"
     })
 }
