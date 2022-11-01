@@ -1,5 +1,7 @@
 require("dotenv").config();
+const bodyParser = require("body-parser");
 const express = require('express');
+
 
 const mongoose = require('mongoose');
 
@@ -17,7 +19,10 @@ const port = process.env.port || 8002;
 
 const app = express();
 
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(bodyParser.json());
 
 app.use('/', require('./routes'));
 
