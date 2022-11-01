@@ -52,3 +52,10 @@ module.exports.userRegister = (req,res) => {
         }
     }
 }
+
+
+module.exports.viewRecord = (req,res) => {
+    return res.json(200,{
+        'status' : "All record fetch"
+    })
+}
