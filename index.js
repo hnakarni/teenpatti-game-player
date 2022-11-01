@@ -1,10 +1,21 @@
+require("dotenv").config();
 const express = require('express');
+
+const mongoose = require('mongoose');
+
+console.log(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE,{
+    useNewUrlParser : true,
+    useUnifiedTopology : true
+})
+.then(() => {
+    console.log("db is connected");
+});
+
 
 const port = process.env.port || 8002;
 
 const app = express();
-
-const db = require('./config/mongoose');
 
 app.use(express.urlencoded());
 
