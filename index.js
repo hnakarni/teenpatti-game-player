@@ -5,7 +5,6 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
-console.log(process.env.DATABASE);
 mongoose.connect(process.env.DATABASE,{
     useNewUrlParser : true,
     useUnifiedTopology : true
@@ -15,7 +14,7 @@ mongoose.connect(process.env.DATABASE,{
 });
 
 
-const port = process.env.port || 8002;
+const port = process.env.PORT || 8002;
 
 const app = express();
 

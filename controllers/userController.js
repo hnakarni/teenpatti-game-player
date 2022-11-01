@@ -70,7 +70,7 @@ module.exports.viewRecord = (req,res) => {
         })
     }catch(e){
         return res.status(400).json({
-            'status': "something wrong"
+            'status': e
         })
     }
     
