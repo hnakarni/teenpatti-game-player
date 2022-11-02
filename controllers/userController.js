@@ -73,5 +73,24 @@ module.exports.viewRecord = (req,res) => {
             'status': e
         })
     }
-    
 }
+
+module.exports.userLogin = (req,res) => {
+    try{
+        return res.status(200).json({
+            'status' : "Login successfully"
+        })
+    }
+    catch(e){
+        return res.status(500).json({
+            "status" : "Something wrong"
+        })
+    }
+}
+
+module.exports.failureJson = (req,res) => {
+    return res.status(400).json({
+        "status" : "Invalid Username/Password"
+    })
+}
+
