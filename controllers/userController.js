@@ -1,5 +1,6 @@
 const Joi = require('@hapi/joi');
 const User = require('../models/User');
+const jwtSession = require('jsonwebtoken');
 
 module.exports.userRegister = (req,res) => {
     // console.log("User Controller register");
@@ -74,6 +75,32 @@ module.exports.viewRecord = (req,res) => {
         })
     }
 }
+module.exports.createSession = async (req,res) => {
+    try{
+        let user = await User.findOne({email : req.body.email});
+        if(!user || user.password != req.body.password){
+             return res.status(422).json({
+                'message' : "Invalid username & password"
+             })
+        }
+
+        return res.status(200).json({
+            message: "Sign in Successfully, here is your token, keep it safe",
+            data : {
+                // token : jwt.sign(user.toJSON(),'SudokuG', {expiresIn : '10000'})
+                token : jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '10000'})
+            }
+        })
+    }catch(err){
+        console.log("********", err);
+        return res.status(500).json({
+            'message' : "Internal Server Error"
+        })
+    }
+    
+
+}
+
 
 module.exports.userLogin = (req,res) => {
     try{

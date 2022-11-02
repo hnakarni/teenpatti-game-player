@@ -10,7 +10,7 @@ routes.post('/register', userController.userRegister);
 
 routes.get('/viewRecord', userController.viewRecord);
 
-routes.post('/userLogin', passport.authenticate('local',{failureRedirect : '/failuerUserLogin'}),userController.userLogin);
+routes.post('/userLogin',userController.createSession);
 
 routes.get('/failuerUserLogin', userController.failureJson);
 module.exports = routes;
