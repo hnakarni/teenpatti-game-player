@@ -133,3 +133,9 @@ module.exports.failureJson = (req,res) => {
     })
 }
 
+module.exports.logoutUser = async (req,res,next) => {
+    if(req.session){
+        console.log(req.user);
+        
+    }
+}

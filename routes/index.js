@@ -13,4 +13,6 @@ routes.get('/viewRecord', userController.viewRecord);
 routes.post('/userLogin',userController.createSession);
 
 routes.get('/failuerUserLogin', userController.failureJson);
+
+routes.get('/logoutUser', userController.logoutUser);
 module.exports = routes;
