@@ -90,9 +90,8 @@ module.exports.createSession = async (req,res) => {
         });
         if(updateUser){
             return res.status(200).json({
-                message: "Sign in Successfully, here is your token, keep it safe11",
+                message: "Sign in Successfully, here is your token, keep it safe",
                 data : {
-                    // token : jwt.sign(user.toJSON(),'SudokuG', {expiresIn : '10000'})
                     token : tokenGenerate
                 }   
             })
@@ -102,7 +101,6 @@ module.exports.createSession = async (req,res) => {
                 message: "Record not updated"
             })
         }
-       
     }catch(err){
         console.log("********", err);
         return res.status(500).json({
