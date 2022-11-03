@@ -12,6 +12,12 @@ const userSchema = mongoose.Schema({
     password : {
         type : "String",
         required : true
+    },
+    isLogin : {
+        type : "Boolean"
+    },
+    isLogintoken:{
+        type : "String"
     }
 });
 
