@@ -90,7 +90,7 @@ module.exports.createSession = async (req,res) => {
         });
         if(updateUser){
             return res.status(200).json({
-                message: "Sign in Successfully, here is your token, keep it safe",
+                message: "Sign in Successfully, here is your token, keep it safe11",
                 data : {
                     // token : jwt.sign(user.toJSON(),'SudokuG', {expiresIn : '10000'})
                     token : tokenGenerate
@@ -135,7 +135,7 @@ module.exports.failureJson = (req,res) => {
 
 module.exports.logoutUser = async (req,res,next) => {
     if(req.session){
-        console.log(req.user);
+        console.log(req.session);
         
     }
 }
