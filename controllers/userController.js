@@ -144,7 +144,8 @@ module.exports.failureJson = (req,res) => {
     })
 }
 
-module.exports.logoutUser = async (req,res,next) => {
+module.exports.logoutUser = async (req,res) => {
+    console.log(req.params.id);
     if(req.session){
         console.log(req.user);
         
@@ -152,7 +153,7 @@ module.exports.logoutUser = async (req,res,next) => {
 }
 
 module.exports.logoutSuccess = async (req,res) => {
-    console.log("fail");
+    
     if(req.session){
         console.log(req.user);
     }
