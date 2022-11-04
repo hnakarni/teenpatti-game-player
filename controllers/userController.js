@@ -83,26 +83,34 @@ module.exports.createSession = async (req,res) => {
                 'message' : "Invalid username & password"
              });
         }
-        console.log(user.isLogin);
-        var tokenGenerate = await jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '10000'});
-        console.log(tokenGenerate);
-        let updateUser = await User.findByIdAndUpdate(user.id,{
-            "isLogin" : "1",
-            "isLogintoken" : tokenGenerate
-        });
-        if(updateUser){
+        // console.log(user.isLogin);
+        if(user.isLogin){
             return res.status(200).json({
-                message: "Sign in Successfully, here is your token, keep it safe",
-                data : {
-                    token : tokenGenerate
-                }   
+                message : "Your are already Login! Please logout"
             })
         }
         else{
-            return res.status(422).json({
-                message: "Record not updated"
-            })
+            var tokenGenerate = await jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '10000'});
+            //console.log(tokenGenerate);
+            let updateUser = await User.findByIdAndUpdate(user.id,{
+                "isLogin" : "1",
+                "isLogintoken" : tokenGenerate
+            });
+            if(updateUser){
+                return res.status(200).json({
+                    message: "Sign in Successfully, here is your token, keep it safe",
+                    data : {
+                        token : tokenGenerate
+                    }   
+                })
+            }
+            else{
+                return res.status(422).json({
+                    message: "Record not updated"
+                })
+            }
         }
+        
     }catch(err){
         console.log("********", err);
         return res.status(500).json({
