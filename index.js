@@ -2,7 +2,6 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const express = require('express');
 
-
 const mongoose = require('mongoose');
 
 const session = require('express-session');
@@ -10,6 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 const passportLocal = require('./config/passport-local-strategy');
+
 const passportJwt = require('./config/passport-jwt-strategy');
 
 mongoose.connect(process.env.DATABASE,{
@@ -20,12 +20,10 @@ mongoose.connect(process.env.DATABASE,{
     console.log("db is connected");
 });
 
-
 const port = process.env.PORT || 8002;
 
 const app = express();
 
-// app.use(express.urlencoded());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json());
