@@ -83,6 +83,7 @@ module.exports.createSession = async (req,res) => {
                 'message' : "Invalid username & password"
              });
         }
+        console.log(user.isLogin);
         var tokenGenerate = await jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '10000'});
         console.log(tokenGenerate);
         let updateUser = await User.findByIdAndUpdate(user.id,{
