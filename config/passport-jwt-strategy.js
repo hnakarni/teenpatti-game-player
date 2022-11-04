@@ -17,7 +17,6 @@ passport.use(new JWTStrategy(opts, function(jwtPayLoad,done){
             return;
         }
         if(user){
-            
             return done(null,user);
         }
         else{

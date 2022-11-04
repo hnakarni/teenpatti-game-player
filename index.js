@@ -8,9 +8,9 @@ const session = require('express-session');
 
 const passport = require('passport');
 
+const passportJwt = require('./config/passport-jwt-strategy');
 const passportLocal = require('./config/passport-local-strategy');
 
-const passportJwt = require('./config/passport-jwt-strategy');
 
 mongoose.connect(process.env.DATABASE,{
     useNewUrlParser : true,
@@ -29,8 +29,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(session({
-    name : "SudokuGame",
-    secret : "Snake",
+    name : "SudokuG",
+    secret : "SudokuG",
     saveUninitialized : false,
     resave : false,
     cookie : {
