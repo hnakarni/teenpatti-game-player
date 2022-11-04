@@ -145,11 +145,34 @@ module.exports.failureJson = (req,res) => {
 }
 
 module.exports.logoutUser = async (req,res) => {
-    console.log(req.params.id);
-    if(req.session){
-        console.log(req.user);
-        
-    }
+    User.findById(req.params.id, function(err,user){
+        if(err){
+            return res.status(422).json({
+                'message' : "Internal error"
+            })
+        }
+        if(user){
+            let userUpdate = User.findByIdAndUpdate(user.id,{
+                isLogin : "false",
+                isLogintoken : ""
+            });
+            if(userUpdate){
+                return res.status(200).json({
+                    'message':"Logout Successfully"
+                })
+            }
+            else{
+                return res.status(500).json({
+                    'message' : "Some internal error"
+                })
+            }
+        }else{
+            return res.status(500).json({
+                'message' : "User not found"
+            })
+        }
+    })
+    
 }
 
 module.exports.logoutSuccess = async (req,res) => {
