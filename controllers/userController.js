@@ -86,7 +86,10 @@ module.exports.createSession = async (req,res) => {
         // console.log(user.isLogin);
         if(user.isLogin){
             return res.status(200).json({
-                message : "Your are already Login! Please logout"
+                message : "Your are already Login! Please logout",
+                data : {
+                    token : user.isLogintoken
+                }
             })
         }
         else{
@@ -143,7 +146,13 @@ module.exports.failureJson = (req,res) => {
 
 module.exports.logoutUser = async (req,res,next) => {
     if(req.session){
-        console.log(req.users);
+        console.log(req.user);
         
+    }
+}
+
+module.exports.logoutSuccess = async (req,res) => {
+    if(req.session){
+        console.log(req.user);
     }
 }
