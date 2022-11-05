@@ -8,7 +8,7 @@ const userController = require('../controllers/userController');
 
 routes.post('/register', userController.userRegister);
 
-routes.get('/viewRecord',passport.authenticate('jwt',{session : false}),userController.viewRecord);
+routes.get('/viewRecord',passport.authenticate('jwt',{failureRedirect : '/failuerUserLogin'}),userController.viewRecord);
 
 routes.post('/userLogin',userController.createSession);
 
