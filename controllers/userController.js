@@ -179,6 +179,18 @@ module.exports.logoutUser = async (req,res) => {
    
 }
 
+module.exports.failureLogout = async (req,res) => {
+    try{
+        return res.status(200).json({
+            'message' : "token in expired"
+        })
+    }catch(e){
+        return res.status(400).json({
+            'message' : "something wrong"
+        })
+    }
+}
+
 module.exports.logoutSuccess = async (req,res) => {
     
     if(req.session){
