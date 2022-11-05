@@ -64,10 +64,12 @@ module.exports.userRegister = (req,res) => {
 }
 
 
-module.exports.viewRecord = (req,res) => {
+module.exports.viewRecord = async (req,res) => {
     try{
+        let userData = await User.find({});
         return res.status(200).json({
-            'status' : "All Record fetch"
+            'status' : "All Record fetch",
+            'record' : userData
         })
     }catch(e){
         return res.status(400).json({
