@@ -142,7 +142,7 @@ module.exports.userLogin = (req,res) => {
 
 module.exports.failureJson = (req,res) => {
     return res.status(400).json({
-        "status" : "Invalid Username/Password"
+        "status" : "you have to first login !"
     })
 }
 
