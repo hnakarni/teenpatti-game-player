@@ -66,7 +66,7 @@ module.exports.userRegister = (req,res) => {
 
 module.exports.viewRecord = async (req,res) => {
     try{
-        console.log(req.user);
+        // console.log(req.user.username);
         let userData = await User.find({});
         return res.status(200).json({
             'status' : "All Record fetch",
@@ -148,34 +148,34 @@ module.exports.failureJson = (req,res) => {
 }
 
 module.exports.logoutUser = async (req,res) => {
-    console.log(req.user);
-    // try{
-    //     let user = await User.findById(req.params.id);
-    //     if(user){
-    //         let userUpdate =await User.findByIdAndUpdate(user.id,{
-    //             isLogin : "false",
-    //             isLogintoken : ""
-    //         });
-    //         if(userUpdate){
-    //             return res.status(200).json({
-    //                 'message':"Logout Successfully"
-    //             })
-    //         }
-    //         else{
-    //             return res.status(500).json({
-    //                 'message' : "Some internal error"
-    //             })
-    //         }
-    //     }else{
-    //         return res.status(500).json({
-    //             'message' : "User not found"
-    //         })
-    //     }
-    // }catch(err){
-    //     return res.status(500).json({
-    //         'message' : err
-    //     })
-    // }
+    try{
+        // console.log(req.user);
+        // let user = await User.findById(req.params.id);
+        if(req.user){
+            let userUpdate =await User.findByIdAndUpdate(req.user.id,{
+                isLogin : "false",
+                isLogintoken : ""
+            });
+            if(userUpdate){
+                return res.status(200).json({
+                    'message':"Logout Successfully"
+                })
+            }
+            else{
+                return res.status(500).json({
+                    'message' : "Some internal error"
+                })
+            }
+        }else{
+            return res.status(500).json({
+                'message' : "User not found"
+            })
+        }
+    }catch(err){
+        return res.status(500).json({
+            'message' : err
+        })
+    }
    
 }
 
