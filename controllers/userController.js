@@ -95,7 +95,7 @@ module.exports.createSession = async (req,res) => {
             })
         }
         else{
-            var tokenGenerate = await jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '10000'});
+            var tokenGenerate = await jwtSession.sign(user.toJSON(),'SudokuG',{ expiresIn: '100000'});
             //console.log(tokenGenerate);
             let updateUser = await User.findByIdAndUpdate(user.id,{
                 "isLogin" : "1",
