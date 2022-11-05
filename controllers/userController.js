@@ -147,14 +147,10 @@ module.exports.failureJson = (req,res) => {
 }
 
 module.exports.logoutUser = async (req,res) => {
-    User.findById(req.params.id, function(err,user){
-        if(err){
-            return res.status(422).json({
-                'message' : "Internal error"
-            })
-        }
+    try{
+        let user = await User.findById(req.params.id);
         if(user){
-            let userUpdate = User.findByIdAndUpdate(user.id,{
+            let userUpdate =await User.findByIdAndUpdate(user.id,{
                 isLogin : "false",
                 isLogintoken : ""
             });
@@ -173,8 +169,12 @@ module.exports.logoutUser = async (req,res) => {
                 'message' : "User not found"
             })
         }
-    })
-    
+    }catch(err){
+        return res.status(500).json({
+            'message' : err
+        })
+    }
+   
 }
 
 module.exports.logoutSuccess = async (req,res) => {
