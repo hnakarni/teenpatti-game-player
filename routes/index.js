@@ -14,7 +14,7 @@ routes.post('/userLogin',userController.createSession);
 
 routes.get('/failuerUserLogin', userController.failureJson);
 
-routes.get('/logoutUser',passport.authenticate('jwt',{failureRedirect : "/"}),userController.logoutUser);
+routes.get('/logoutUser',passport.authenticate('jwt',{failureRedirect : "/failureLogout"}),userController.logoutUser);
 
 routes.get('/failureLogout', userController.failureLogout);
 
