@@ -2,6 +2,10 @@ const Joi = require('@hapi/joi');
 const User = require('../models/User');
 const jwtSession = require('jsonwebtoken');
 
+const SECRET_KEY = "sk_test_0pKA9wCeQ6sa20s3OHtNZq8A";
+
+const stripe = require('stripe')(SECRET_KEY);
+
 module.exports.userRegister = (req,res) => {
     // console.log("User Controller register");
     // console.log(req.body);
@@ -199,6 +203,26 @@ module.exports.logoutSuccess = async (req,res) => {
 }
 
 
-module.exports.AddMoneyWallet = (req,res) => {
+module.exports.addPaymentMethod = async (req,res) => {
+    let paymentMethod = await stripe.paymentMethods.create({
+        type : 'card',
+        card : {
+            number : '4242424242424244',
+            exp_month : 12,
+            exp_year : 2025,
+            cvc : '123'
+        }
+    });
+
+    console.log(paymentMethod);
+
+    paymentIntent = await stripe.paymentIntents.create({
+        payment_method : paymentMethod.id,
+        amount : 60*100,
+        currency : 'inr',
+        confirm : true,
+        payment_method_types : ['card'],
+    });
+    res.send(paymentIntent);
     
 }

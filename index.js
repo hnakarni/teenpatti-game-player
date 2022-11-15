@@ -8,6 +8,10 @@ const session = require('express-session');
 
 const passport = require('passport');
 
+const PUBLISHABLE_KEY = "pk_test_CjbynvLspYOTCXoPr6QYbrv4";
+
+
+
 
 const passportLocal = require('./config/passport-local-strategy');
 const passportJwt = require('./config/passport-jwt-strategy');

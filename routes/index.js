@@ -20,5 +20,5 @@ routes.get('/failureLogout', userController.failureLogout);
 
 routes.get('/logoutSuccess', userController.logoutSuccess);
 
-routes.get('/AddMoneyWallet', userController.AddMoneyWallet);
+routes.post('/addPaymentMethod', userController.addPaymentMethod);
 module.exports = routes;
