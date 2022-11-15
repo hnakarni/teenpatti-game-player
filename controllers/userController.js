@@ -224,8 +224,16 @@ module.exports.addPaymentMethod = async (req,res) => {
         payment_method_types : ['card'],
     });
     // res.send(paymentIntent);
-    return res.status(400).json({
-        'message' : paymentIntent
-    })
+    if(!paymentIntent.id){
+        return res.status(400).json({
+            'message' : "something wrong";
+        })
+    }
+    else{
+        return res.status(400).json({
+            'message' : paymentIntent.id
+        })
+    }
+   
     
 }
