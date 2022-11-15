@@ -207,7 +207,7 @@ module.exports.addPaymentMethod = async (req,res) => {
     let paymentMethod = await stripe.paymentMethods.create({
         type : 'card',
         card : {
-            number : '4242424242424244',
+            number : '4242424242424242',
             exp_month : 12,
             exp_year : 2025,
             cvc : '123'
@@ -223,6 +223,9 @@ module.exports.addPaymentMethod = async (req,res) => {
         confirm : true,
         payment_method_types : ['card'],
     });
-    res.send(paymentIntent);
+    // res.send(paymentIntent);
+    return res.status(400).json({
+        'message' : paymentIntent
+    })
     
 }
