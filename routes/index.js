@@ -19,4 +19,6 @@ routes.get('/logoutUser',passport.authenticate('jwt',{failureRedirect : "/failur
 routes.get('/failureLogout', userController.failureLogout);
 
 routes.get('/logoutSuccess', userController.logoutSuccess);
+
+routes.get('/AddMoneyWallet', userController.AddMoneyWallet);
 module.exports = routes;

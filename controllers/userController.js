@@ -197,3 +197,8 @@ module.exports.logoutSuccess = async (req,res) => {
         console.log(req.user);
     }
 }
+
+
+module.exports.AddMoneyWallet = (req,res) => {
+    
+}
