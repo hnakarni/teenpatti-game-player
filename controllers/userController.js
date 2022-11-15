@@ -226,7 +226,7 @@ module.exports.addPaymentMethod = async (req,res) => {
     // res.send(paymentIntent);
     if(!paymentIntent.id){
         return res.status(400).json({
-            'message' : "something wrong";
+            'message' : "something wrong"
         })
     }
     else{
