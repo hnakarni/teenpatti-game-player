@@ -207,20 +207,21 @@ module.exports.addPaymentMethod = async (req,res) => {
     let paymentMethod = await stripe.paymentMethods.create({
         type : 'card',
         card : {
-            number : '4242424242424242',
-            exp_month : 12,
-            exp_year : 2025,
-            cvc : '123'
+            number : req.body.card_number,
+            exp_month : req.body.exp_month,
+            exp_year : req.body.exp_year,
+            cvc : req.body.cvc
         }
     });
 
-    console.log(paymentMethod);
+    // console.log(paymentMethod);
 
     paymentIntent = await stripe.paymentIntents.create({
         payment_method : paymentMethod.id,
-        amount : 60*100,
+        amount : parseInt(req.body.amount)*100,
         currency : 'inr',
         confirm : true,
+        email : req.body.email,
         payment_method_types : ['card'],
     });
     // res.send(paymentIntent);
@@ -233,7 +234,5 @@ module.exports.addPaymentMethod = async (req,res) => {
         return res.status(400).json({
             'message' : paymentIntent.id
         })
-    }
-   
-    
+    }   
 }
