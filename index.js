@@ -10,13 +10,11 @@ const passport = require('passport');
 
 const PUBLISHABLE_KEY = "pk_test_CjbynvLspYOTCXoPr6QYbrv4";
 
-
-
-
 const passportLocal = require('./config/passport-local-strategy');
+
 const passportJwt = require('./config/passport-jwt-strategy');
 
-mongoose.connect(process.env.DATABASE,{
+mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qmui4jq.mongodb.net/TeenPatti",{
     useNewUrlParser : true,
     useUnifiedTopology : true
 })
@@ -24,7 +22,16 @@ mongoose.connect(process.env.DATABASE,{
     console.log("db is connected");
 });
 
-const port = process.env.PORT || 8002;
+mongoose.connection.once('open', function(){
+    console.log('Conection has been made!');
+  }).on('error', function(error){
+      console.log('Error is: ', error);
+  });
+
+
+
+
+const port = process.env.PORT || 8003;
 
 const app = express();
 
