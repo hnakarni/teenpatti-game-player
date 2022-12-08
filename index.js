@@ -24,12 +24,9 @@ mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qmui4jq
 
 mongoose.connection.once('open', function(){
     console.log('Conection has been made!');
-  }).on('error', function(error){
-      console.log('Error is: ', error);
-  });
-
-
-
+}).on('error', function(error){
+    console.log('Error is: ', error);
+});
 
 const port = process.env.PORT || 8003;
 
@@ -59,6 +56,6 @@ app.listen(port, function(err){
         console.log("server is not running");
         return false;
     }
-    console.log("server is running on port:8002");
+    console.log("server is running on port:8003");
 });
 
