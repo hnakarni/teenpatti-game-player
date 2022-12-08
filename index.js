@@ -14,7 +14,7 @@ const passportLocal = require('./config/passport-local-strategy');
 
 const passportJwt = require('./config/passport-jwt-strategy');
 
-mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qmui4jq.mongodb.net/TeenPatti",{
+mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qvbkxjl.mongodb.net/TeenPatti",{
     useNewUrlParser : true,
     useUnifiedTopology : true
 })
