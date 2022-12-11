@@ -56,6 +56,6 @@ app.listen(port, function(err){
         console.log("server is not running");
         return false;
     }
-    console.log("server is running on port:8002");
+    console.log("server is running on port:",port);
 });
 
