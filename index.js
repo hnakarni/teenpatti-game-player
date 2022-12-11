@@ -14,7 +14,7 @@ const passportLocal = require('./config/passport-local-strategy');
 
 const passportJwt = require('./config/passport-jwt-strategy');
 
-mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qvbkxjl.mongodb.net/TeenPatti",{
+mongoose.connect("mongodb+srv://piyushTeenPatti:TeenPattipiyush@cluster0.qmui4jq.mongodb.net/TeenPatti",{
     useNewUrlParser : true,
     useUnifiedTopology : true
 })
@@ -56,6 +56,6 @@ app.listen(port, function(err){
         console.log("server is not running");
         return false;
     }
-    console.log("server is running on port:8003");
+    console.log("server is running on port:8002");
 });
 

@@ -7,8 +7,8 @@ const SECRET_KEY = "sk_test_0pKA9wCeQ6sa20s3OHtNZq8A";
 const stripe = require('stripe')(SECRET_KEY);
 
 module.exports.userRegister = (req,res) => {
-    // console.log("User Controller register");
-    // console.log(req.body);
+    console.log("User Controller register");
+    console.log(req.body);
    try{
     const Schema = Joi.object().keys({
         username : Joi.string().min(3).required(),
